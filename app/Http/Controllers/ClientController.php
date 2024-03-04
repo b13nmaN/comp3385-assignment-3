@@ -37,7 +37,6 @@ class ClientController extends Controller
         $client->address = $address;
         $client->company_logo = $filename;
         // save image
-       
         $logo->storeAs('photos', $filename, 'public'); 
         $client->save();
 

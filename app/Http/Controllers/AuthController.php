@@ -20,7 +20,8 @@ class AuthController extends Controller
             'password' => "required",
         ]);
 
-
+        
+        
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
@@ -30,5 +31,14 @@ class AuthController extends Controller
             // Authentication failed
             return back()->with('error', 'Invalid credentials. Check the email address and password entered.');
         }
+    }
+
+    // create a logout function to logout the user
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
     }
 }

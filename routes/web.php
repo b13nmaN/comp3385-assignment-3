@@ -24,11 +24,17 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store']);
 
+
 Route::get('/clients/add', [ClientController::class, 'create'])->name('clients');
 Route::post('/clients', [ClientController::class, 'store'])->name('clients.store');
+
+Route::get('/logout', [AuthController::class, 'destroy'])->name('logout')->middleware('auth');
+
+
+
 // Create additional Routes below

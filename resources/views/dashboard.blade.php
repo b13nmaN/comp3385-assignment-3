@@ -7,6 +7,11 @@
         {{ session('onSuccess') }}
     </div>
     @endif
+    @if (session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
 </div>
 <div class="d-flex justify-content-between">
     <h1 class="display-5 fw-bold text-body-emphasis">Dashboard</h1>

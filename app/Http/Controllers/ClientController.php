@@ -27,6 +27,7 @@ class ClientController extends Controller
         $phone = $request->input('telephone');
         $address = $request->input('address');
         $logo = $request->file('company_logo');
+        $filename = $name . time() . '.' . $logo->getClientOriginalExtension();
 
         // add to clients table
         $client = new Client();
@@ -34,10 +35,10 @@ class ClientController extends Controller
         $client->email = $email;
         $client->telephone = $phone;
         $client->address = $address;
-        $client->company_logo = $logo;
+        $client->company_logo = $filename;
         // save image
-        $filename = $name . time() . '.' . $logo->getClientOriginalExtension();
-        $logo->storeAs('photos', $filename); // Fixed this line
+       
+        $logo->storeAs('photos', $filename, 'public'); 
         $client->save();
 
         return redirect('dashboard')->with('onSuccess', 'Client created successfully!');

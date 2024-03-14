@@ -17,7 +17,6 @@
     <h1 class="display-5 fw-bold text-body-emphasis">Dashboard</h1>
     <div class="d-flex justify-content-center align-items-center">
         <a href="{{ url('/clients/add') }}" class="btn btn-primary align-middle text-center"> + Create Clients </a>
-        <a href="{{ route('logout') }}" class="btn text-primary border border-primary ms-3 align-middle text-center"> Logout </a>
     </div>
 </div>
 <p class="lead">Welcome to your dashboard. Here you can manage your account, your clients and much more.</p>
